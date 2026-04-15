@@ -1,0 +1,33 @@
+{
+  "name": "openrouter-simulator",
+  "version": "1.0.0",
+  "description": "Local OpenRouter API simulator for testing without burning tokens",
+  "main": "dist/index.js",
+  "packageManager": "pnpm@10.33.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/index.js",
+    "dev": "ts-node src/index.ts",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "dependencies": {
+    "csv-parse": "^5.5.6",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": ["esbuild"]
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.14.2",
+    "@types/supertest": "^6.0.2",
+    "@vitest/coverage-v8": "^2.0.0",
+    "supertest": "^7.0.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.2",
+    "vitest": "^2.0.0"
+  }
+}
