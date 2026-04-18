@@ -1,6 +1,7 @@
-prompt,response
-what is the capital of France,The capital of France is Paris.
-hello,Hello! How can I help you today?
-what is 2+2,2 + 2 equals 4.
-tell me a joke,"Why don't scientists trust atoms? Because they make up everything!"
-what is the meaning of life,"According to the Simulator, it's 42."
+matchType,prompt,response1,response2,response3,response4,response5
+exact,what is the capital of France,The capital of France is Paris.,,,,
+exact,hello,Hello! How can I help you today?,Hi there! What can I do for you?,Hey! How can I assist?,,
+exact,what is 2+2,2 + 2 equals 4.,,,,
+exact,tell me a joke,Why don't scientists trust atoms? Because they make up everything!,I told my wife she was drawing her eyebrows too high. She looked surprised.,"Why can't you explain puns to kleptomaniacs? They always take things literally.",,
+exact,what is the meaning of life,"According to the Simulator, it's 42.",,,,
+contain,joke,Why don't scientists trust atoms? Because they make up everything!,I told my wife she was drawing her eyebrows too high. She looked surprised.,"Why can't you explain puns to kleptomaniacs? They always take things literally.",Why did the scarecrow win an award? Because he was outstanding in his field!,
