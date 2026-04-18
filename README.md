@@ -23,15 +23,38 @@ Copy `.env.example` to `.env` and adjust as needed:
 
 ## Prompt overrides
 
-Create a `prompts.csv` file in the project root with two columns — `prompt` and `response`. When the incoming user message matches a `prompt` row (case-insensitive, trimmed), the corresponding `response` is returned instead of the default.
+Create a `prompts.csv` file in the project root. When the incoming user message matches a row, the corresponding response is returned instead of the default. The file is loaded at startup; restart the server to pick up changes.
+
+### Columns
+
+| Column | Required | Description |
+|---|---|---|
+| `matchType` | No | `exact` (default) or `contain` — see below |
+| `prompt` | Yes | The prompt string to match against |
+| `response1` | Yes* | First (or only) response |
+| `response2`–`response5` | No | Additional response variants |
+
+\* At least one of `response1` or the legacy `response` column must be non-empty.
+
+### Match types
+
+- **`exact`** — the incoming message must equal the `prompt` value exactly (case-insensitive, trimmed). This is the default when `matchType` is omitted.
+- **`contain`** — the incoming message must _contain_ the `prompt` value as a substring (case-insensitive).
+
+### Multiple responses
+
+If more than one `response` column has a non-empty value, one is chosen at random on each request. This lets you vary replies without changing the simulator's wiring.
 
 ```csv
-prompt,response
-what is 2+2,The answer is 4.
-hello,Hey there!
+matchType,prompt,response1,response2,response3,response4,response5
+exact,what is 2+2,The answer is 4.,,,,
+exact,hello,Hey there!,Hi! How can I help?,Hello!,,
+contain,joke,Why don't scientists trust atoms? Because they make up everything!,I told my wife she was drawing her eyebrows too high. She looked surprised.,"Why can't you explain puns to kleptomaniacs? They always take things literally.",,
 ```
 
-The file is loaded at startup. Restart the server to pick up changes.
+### Legacy format
+
+The old two-column format (`prompt,response`) is still supported for backwards compatibility.
 
 ## API
 
